@@ -19,6 +19,10 @@ class CreateTransactionService {
       throw new Error('Transaction type is invalid');
     }
 
+    if (value <= 0) {
+      throw new Error('Value is invalid');
+    }
+
     const { total } = this.transactionsRepository.getBalance();
 
     if (type === 'outcome' && total < value) {
